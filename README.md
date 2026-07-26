@@ -54,6 +54,7 @@ Deployment:
 - [API Routes](docs/api.md)
 - [Data Flow](docs/data-flow.md)
 - [UI/UX Design](docs/ui-ux-design.md)
+- [Landing Page](docs/landing-page.md)
 - [Deployment](docs/deployment.md)
 
 ## Security
