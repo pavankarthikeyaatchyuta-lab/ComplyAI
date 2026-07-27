@@ -8,9 +8,383 @@
       content="ComplyAI turns GST notices into verified action plans for small businesses, chartered accountants, and MSME operators."
     />
     <title>ComplyAI | Verified GST Action Plans</title>
+    <style>
+      :root {
+        color: #f8fafc;
+        background: #071a2f;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        background:
+          radial-gradient(circle at 18% 12%, rgba(46, 144, 250, 0.32), transparent 28rem),
+          radial-gradient(circle at 80% 8%, rgba(16, 185, 129, 0.18), transparent 26rem),
+          linear-gradient(180deg, #071a2f 0%, #04111f 100%);
+      }
+
+      .static-landing {
+        position: relative;
+        min-height: 100vh;
+        overflow: hidden;
+        padding: 28px;
+      }
+
+      .static-landing::before,
+      .static-landing::after {
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        content: "";
+        border-radius: 999px;
+        filter: blur(92px);
+        opacity: 0.5;
+      }
+
+      .static-landing::before {
+        top: 12%;
+        left: -120px;
+        background: #155eef;
+      }
+
+      .static-landing::after {
+        right: -80px;
+        bottom: 16%;
+        background: #10b981;
+      }
+
+      .static-shell {
+        position: relative;
+        z-index: 1;
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+
+      .static-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 18px 0;
+      }
+
+      .static-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #fff;
+        font-size: 19px;
+        font-weight: 800;
+      }
+
+      .static-logo {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #2e90fa, #10b981);
+        box-shadow: 0 0 40px rgba(46, 144, 250, 0.32);
+      }
+
+      .static-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+        padding: 10px 16px;
+        color: #cbd5e1;
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(18px);
+      }
+
+      .static-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+        gap: 52px;
+        align-items: center;
+        padding: 84px 0 56px;
+      }
+
+      .static-copy h1 {
+        max-width: 760px;
+        margin: 22px 0;
+        color: #fff;
+        font-size: clamp(46px, 7vw, 82px);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+      }
+
+      .static-gradient-text {
+        color: transparent;
+        background: linear-gradient(90deg, #7dd3fc, #fff, #10b981);
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+
+      .static-copy p {
+        margin: 0;
+        color: #cbd5e1;
+        font-size: clamp(20px, 3vw, 28px);
+        line-height: 1.35;
+      }
+
+      .static-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 34px;
+      }
+
+      .static-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 999px;
+        padding: 15px 22px;
+        color: #fff;
+        background: linear-gradient(90deg, #155eef, #10b981);
+        box-shadow: 0 0 46px rgba(46, 144, 250, 0.3);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .static-button.secondary {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: none;
+      }
+
+      .static-card {
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 32px;
+        background: rgba(255, 255, 255, 0.07);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+        backdrop-filter: blur(24px);
+      }
+
+      .static-dashboard {
+        padding: 22px;
+      }
+
+      .static-dashboard-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 20px;
+      }
+
+      .static-dashboard h2,
+      .static-report h3 {
+        margin: 0;
+        color: #fff;
+      }
+
+      .static-muted {
+        color: #94a3b8;
+        font-size: 14px;
+      }
+
+      .static-badge {
+        border: 1px solid rgba(16, 185, 129, 0.32);
+        border-radius: 999px;
+        padding: 8px 12px;
+        color: #10b981;
+        background: rgba(16, 185, 129, 0.11);
+        font-size: 13px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .static-steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .static-step,
+      .static-report {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .static-step-bar {
+        height: 6px;
+        margin-bottom: 12px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #2e90fa, #10b981);
+      }
+
+      .static-report {
+        margin-top: 18px;
+        padding: 18px;
+      }
+
+      .static-lines {
+        display: grid;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .static-line {
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+      }
+
+      .static-line.short {
+        width: 72%;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .static-sections {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        padding: 20px 0 72px;
+      }
+
+      .static-feature {
+        padding: 20px;
+      }
+
+      .static-feature h3 {
+        margin: 0 0 8px;
+        color: #fff;
+      }
+
+      .static-feature p {
+        margin: 0;
+        color: #cbd5e1;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 920px) {
+        .static-hero {
+          grid-template-columns: 1fr;
+          padding-top: 48px;
+        }
+
+        .static-sections {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 620px) {
+        .static-landing {
+          padding: 18px;
+        }
+
+        .static-nav {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .static-steps,
+        .static-sections {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <main class="static-landing">
+        <div class="static-shell">
+          <nav class="static-nav">
+            <div class="static-brand">
+              <span class="static-logo">✓</span>
+              ComplyAI
+            </div>
+            <span class="static-pill">GST workflow dashboard · file preview mode</span>
+          </nav>
+
+          <section class="static-hero">
+            <div class="static-copy">
+              <span class="static-pill">Built for compliance workflows, not chat threads</span>
+              <h1>
+                Turn GST Notices into
+                <span class="static-gradient-text">Verified Action Plans</span>
+              </h1>
+              <p>
+                Upload once.<br />
+                Understand instantly.
+              </p>
+              <div class="static-actions">
+                <a class="static-button" href="./index.html">Analyze Document</a>
+                <a class="static-button secondary" href="./index.html">Developer Mode</a>
+              </div>
+            </div>
+
+            <aside class="static-card static-dashboard">
+              <div class="static-dashboard-header">
+                <div>
+                  <span class="static-muted">Workflow</span>
+                  <h2>DRC-01 Notice Review</h2>
+                </div>
+                <span class="static-badge">Verified</span>
+              </div>
+              <div class="static-steps">
+                <div class="static-step">
+                  <div class="static-step-bar"></div>
+                  <strong>Upload</strong>
+                  <div class="static-muted">Complete</div>
+                </div>
+                <div class="static-step">
+                  <div class="static-step-bar"></div>
+                  <strong>Planner</strong>
+                  <div class="static-muted">Complete</div>
+                </div>
+                <div class="static-step">
+                  <div class="static-step-bar"></div>
+                  <strong>Reviewer</strong>
+                  <div class="static-muted">Passed</div>
+                </div>
+              </div>
+              <div class="static-report">
+                <h3>Compliance Report Preview</h3>
+                <div class="static-lines">
+                  <div class="static-line"></div>
+                  <div class="static-line short"></div>
+                  <div class="static-line"></div>
+                </div>
+              </div>
+            </aside>
+          </section>
+
+          <section class="static-sections">
+            <article class="static-card static-feature">
+              <h3>Agent Workflow</h3>
+              <p>Upload, extract, plan, execute, review, and generate a final report.</p>
+            </article>
+            <article class="static-card static-feature">
+              <h3>Security</h3>
+              <p>Provider keys stay in environment variables and never in committed files.</p>
+            </article>
+            <article class="static-card static-feature">
+              <h3>Report Preview</h3>
+              <p>Structured summaries, required actions, missing fields, and draft responses.</p>
+            </article>
+            <article class="static-card static-feature">
+              <h3>Documents</h3>
+              <p>DRC-01, GSTR-3A, ASMT-10, GST invoices, and tax reminders.</p>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
