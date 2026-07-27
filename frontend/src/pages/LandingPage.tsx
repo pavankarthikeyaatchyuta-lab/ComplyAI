@@ -343,7 +343,7 @@ function HeroSection() {
               <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
             </a>
             <a
-              href="#workflow"
+              href="#/developer"
               className="flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/8 px-7 py-4 text-base font-semibold text-white backdrop-blur-xl transition hover:-translate-y-1 hover:bg-white/12 sm:w-auto"
             >
               <Code2 className="h-5 w-5" />

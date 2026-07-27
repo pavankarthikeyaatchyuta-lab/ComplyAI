@@ -64,6 +64,7 @@ Deployment:
 - [Upload Experience](docs/upload-experience.md)
 - [Workflow Dashboard](docs/workflow-dashboard.md)
 - [Compliance Report](docs/compliance-report.md)
+- [Developer Mode](docs/developer-mode.md)
 - [Deployment](docs/deployment.md)
 
 ## Local Frontend
@@ -96,6 +97,12 @@ The compliance report is available at:
 
 ```text
 http://localhost:5173/#/report
+```
+
+Developer Mode is available at:
+
+```text
+http://localhost:5173/#/developer
 ```
 
 ## Security

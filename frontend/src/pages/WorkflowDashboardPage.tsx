@@ -132,6 +132,12 @@ export function WorkflowDashboardPage() {
                   </p>
                 </div>
               </div>
+              <a
+                href="#/developer"
+                className="mt-5 inline-flex rounded-full border border-white/12 bg-white/[0.06] px-4 py-2 text-sm font-extrabold text-white transition hover:bg-white/[0.1]"
+              >
+                Open Developer Mode
+              </a>
             </div>
 
             <a
