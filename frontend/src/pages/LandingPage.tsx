@@ -169,7 +169,7 @@ function SiteHeader() {
           </a>
         </div>
         <a
-          href="#upload"
+          href="#/upload"
           className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-navy transition hover:-translate-y-0.5 hover:bg-slate-100"
         >
           Analyze Document
@@ -336,7 +336,7 @@ function HeroSection() {
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="#features"
+              href="#/upload"
               className="group flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-emerald px-7 py-4 text-base font-bold text-white shadow-glow transition hover:-translate-y-1 sm:w-auto"
             >
               Analyze Document
@@ -606,7 +606,7 @@ function Footer() {
   return (
     <footer className="border-t border-white/10 px-5 py-10 md:px-8">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
-        <p>ComplyAI · ChatGPT Codex India Hackathon 2026</p>
+        <p>ComplyAI - ChatGPT Codex India Hackathon 2026</p>
         <div className="flex gap-5">
           <a href="#features" className="transition hover:text-white">
             Features

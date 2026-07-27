@@ -55,7 +55,28 @@ Deployment:
 - [Data Flow](docs/data-flow.md)
 - [UI/UX Design](docs/ui-ux-design.md)
 - [Landing Page](docs/landing-page.md)
+- [Upload Experience](docs/upload-experience.md)
 - [Deployment](docs/deployment.md)
+
+## Local Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Then open:
+
+```text
+http://localhost:5173
+```
+
+The upload experience is available at:
+
+```text
+http://localhost:5173/#/upload
+```
 
 ## Security
 
