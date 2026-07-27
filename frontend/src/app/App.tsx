@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { LandingPage } from "../pages/LandingPage";
+import { ComplianceReportPage } from "../pages/ComplianceReportPage";
 import { UploadPage } from "../pages/UploadPage";
 import { WorkflowDashboardPage } from "../pages/WorkflowDashboardPage";
 
@@ -19,6 +20,10 @@ export function App() {
 
   if (route === "#/workflow") {
     return <WorkflowDashboardPage />;
+  }
+
+  if (route === "#/report") {
+    return <ComplianceReportPage />;
   }
 
   return <LandingPage />;

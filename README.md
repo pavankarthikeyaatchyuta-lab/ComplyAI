@@ -63,6 +63,7 @@ Deployment:
 - [Landing Page](docs/landing-page.md)
 - [Upload Experience](docs/upload-experience.md)
 - [Workflow Dashboard](docs/workflow-dashboard.md)
+- [Compliance Report](docs/compliance-report.md)
 - [Deployment](docs/deployment.md)
 
 ## Local Frontend
@@ -89,6 +90,12 @@ The workflow dashboard is available at:
 
 ```text
 http://localhost:5173/#/workflow
+```
+
+The compliance report is available at:
+
+```text
+http://localhost:5173/#/report
 ```
 
 ## Security

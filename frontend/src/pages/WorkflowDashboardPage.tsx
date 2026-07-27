@@ -135,10 +135,10 @@ export function WorkflowDashboardPage() {
             </div>
 
             <a
-              href="#/workflow"
+              href="#/report"
               className="flex items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-emerald px-6 py-4 text-sm font-extrabold text-white shadow-glow transition hover:-translate-y-0.5"
             >
-              Continue Review
+              Open Compliance Report
             </a>
           </aside>
         </section>
