@@ -133,6 +133,7 @@ export function WorkflowDashboardPage() {
                 </div>
               </div>
               <a
+                data-cursor="button"
                 href="#/developer"
                 className="mt-5 inline-flex rounded-full border border-white/12 bg-white/[0.06] px-4 py-2 text-sm font-extrabold text-white transition hover:bg-white/[0.1]"
               >
@@ -141,6 +142,7 @@ export function WorkflowDashboardPage() {
             </div>
 
             <a
+              data-cursor="button"
               href="#/report"
               className="flex items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-emerald px-6 py-4 text-sm font-extrabold text-white shadow-glow transition hover:-translate-y-0.5"
             >

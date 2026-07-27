@@ -32,6 +32,7 @@ export function ComplianceReportPage() {
       <div className="relative mx-auto max-w-7xl px-5 py-8 md:px-8">
         <header className="border-b border-white/10 pb-7">
           <a
+            data-cursor="button"
             href="#/workflow"
             className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-white"
           >

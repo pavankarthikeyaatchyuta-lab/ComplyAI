@@ -222,6 +222,7 @@ export function UploadPage() {
                           document is ready for extraction.
                         </p>
                         <a
+                          data-cursor="button"
                           href="#/workflow"
                           className="mt-4 inline-flex rounded-full bg-white px-4 py-2 text-sm font-extrabold text-navy transition hover:bg-slate-100"
                         >
@@ -235,6 +236,7 @@ export function UploadPage() {
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <button
+                  data-cursor="button"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-emerald px-6 py-3 text-sm font-extrabold text-white shadow-glow transition enabled:hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-45"
                   type="button"
                   disabled={!canUpload || status === "uploading" || status === "ocr"}
@@ -244,6 +246,7 @@ export function UploadPage() {
                   Start upload
                 </button>
                 <button
+                  data-cursor="button"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.06] px-6 py-3 text-sm font-bold text-white transition hover:bg-white/[0.1]"
                   type="button"
                   onClick={() => {

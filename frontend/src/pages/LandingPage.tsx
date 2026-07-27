@@ -336,6 +336,7 @@ function HeroSection() {
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
+              data-cursor="button"
               href="#/upload"
               className="group flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-emerald px-7 py-4 text-base font-bold text-white shadow-glow transition hover:-translate-y-1 sm:w-auto"
             >
@@ -343,6 +344,7 @@ function HeroSection() {
               <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
             </a>
             <a
+              data-cursor="button"
               href="#/developer"
               className="flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/8 px-7 py-4 text-base font-semibold text-white backdrop-blur-xl transition hover:-translate-y-1 hover:bg-white/12 sm:w-auto"
             >
@@ -405,6 +407,7 @@ function WorkflowSection() {
           {workflowSteps.map((step, index) => (
             <motion.div
               key={step}
+              data-cursor="agent"
               className="relative glass-panel rounded-3xl p-5"
               initial="hidden"
               whileInView="visible"

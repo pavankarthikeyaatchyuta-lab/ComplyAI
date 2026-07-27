@@ -30,6 +30,7 @@ export function FileDropzone({
 
   return (
     <motion.div
+      data-cursor="upload"
       className={`relative overflow-hidden rounded-[2rem] border border-dashed p-8 text-center transition ${
         dragging
           ? "border-sky-300 bg-sky-400/10"

@@ -32,6 +32,17 @@ body {
     #071a2f;
 }
 
+@media (pointer: fine) {
+  body:has(.comply-custom-cursor-ready),
+  body:has(.comply-custom-cursor-ready) a,
+  body:has(.comply-custom-cursor-ready) button,
+  body:has(.comply-custom-cursor-ready) input,
+  body:has(.comply-custom-cursor-ready) textarea,
+  body:has(.comply-custom-cursor-ready) select {
+    cursor: none;
+  }
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;

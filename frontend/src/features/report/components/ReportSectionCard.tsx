@@ -12,7 +12,7 @@ export function ReportSectionCard({
   action?: ReactNode;
 }) {
   return (
-    <section className="glass-panel rounded-[1.75rem] p-6">
+    <section data-cursor="report" className="glass-panel rounded-[1.75rem] p-6">
       <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           {eyebrow && (

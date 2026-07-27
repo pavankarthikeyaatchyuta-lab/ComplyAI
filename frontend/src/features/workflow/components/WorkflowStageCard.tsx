@@ -30,6 +30,7 @@ export function WorkflowStageCard({
 
   return (
     <motion.article
+      data-cursor="agent"
       className="relative glass-panel rounded-[1.75rem] p-5 transition hover:-translate-y-1 hover:border-white/25"
       initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ComplyCursor } from "../components/cursor/ComplyCursor";
 import { LandingPage } from "../pages/LandingPage";
 import { ComplianceReportPage } from "../pages/ComplianceReportPage";
 import { DeveloperModePage } from "../pages/DeveloperModePage";
@@ -16,20 +17,45 @@ export function App() {
   }, []);
 
   if (route === "#/upload") {
-    return <UploadPage />;
+    return (
+      <>
+        <ComplyCursor />
+        <UploadPage />
+      </>
+    );
   }
 
   if (route === "#/workflow") {
-    return <WorkflowDashboardPage />;
+    return (
+      <>
+        <ComplyCursor />
+        <WorkflowDashboardPage />
+      </>
+    );
   }
 
   if (route === "#/report") {
-    return <ComplianceReportPage />;
+    return (
+      <>
+        <ComplyCursor />
+        <ComplianceReportPage />
+      </>
+    );
   }
 
   if (route === "#/developer") {
-    return <DeveloperModePage />;
+    return (
+      <>
+        <ComplyCursor />
+        <DeveloperModePage />
+      </>
+    );
   }
 
-  return <LandingPage />;
+  return (
+    <>
+      <ComplyCursor />
+      <LandingPage />
+    </>
+  );
 }

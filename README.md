@@ -65,6 +65,7 @@ Deployment:
 - [Workflow Dashboard](docs/workflow-dashboard.md)
 - [Compliance Report](docs/compliance-report.md)
 - [Developer Mode](docs/developer-mode.md)
+- [Custom Cursor](docs/custom-cursor.md)
 - [Deployment](docs/deployment.md)
 
 ## Local Frontend
