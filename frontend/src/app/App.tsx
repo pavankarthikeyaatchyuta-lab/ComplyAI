@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LandingPage } from "../pages/LandingPage";
 import { UploadPage } from "../pages/UploadPage";
+import { WorkflowDashboardPage } from "../pages/WorkflowDashboardPage";
 
 export function App() {
   const [route, setRoute] = useState(window.location.hash);
@@ -14,6 +15,10 @@ export function App() {
 
   if (route === "#/upload") {
     return <UploadPage />;
+  }
+
+  if (route === "#/workflow") {
+    return <WorkflowDashboardPage />;
   }
 
   return <LandingPage />;

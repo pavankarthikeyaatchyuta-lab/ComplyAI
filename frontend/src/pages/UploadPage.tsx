@@ -142,7 +142,7 @@ export function UploadPage() {
             </a>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.06] px-4 py-2 text-sm text-slate-200 backdrop-blur-xl">
               <Sparkles className="h-4 w-4 text-emerald" />
-              Dropbox-simple upload · Vercel-polished workflow
+              Dropbox-simple upload - Vercel-polished workflow
             </div>
             <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-tight text-white md:text-6xl">
               Upload GST documents with confidence.
@@ -221,6 +221,12 @@ export function UploadPage() {
                           File validated, OCR indicator completed, and the
                           document is ready for extraction.
                         </p>
+                        <a
+                          href="#/workflow"
+                          className="mt-4 inline-flex rounded-full bg-white px-4 py-2 text-sm font-extrabold text-navy transition hover:bg-slate-100"
+                        >
+                          Open Workflow Dashboard
+                        </a>
                       </div>
                     </div>
                   </motion.div>

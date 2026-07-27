@@ -8,17 +8,23 @@ Built for the ChatGPT Codex India Hackathon 2026, ComplyAI is designed as a work
 
 ```text
 Upload
-↓
+|
+v
 Extraction
-↓
+|
+v
 Planner
-↓
+|
+v
 Executor
-↓
+|
+v
 Reviewer
-↓
+|
+v
 Optional one revision
-↓
+|
+v
 Compliance Report
 ```
 
@@ -56,6 +62,7 @@ Deployment:
 - [UI/UX Design](docs/ui-ux-design.md)
 - [Landing Page](docs/landing-page.md)
 - [Upload Experience](docs/upload-experience.md)
+- [Workflow Dashboard](docs/workflow-dashboard.md)
 - [Deployment](docs/deployment.md)
 
 ## Local Frontend
@@ -76,6 +83,12 @@ The upload experience is available at:
 
 ```text
 http://localhost:5173/#/upload
+```
+
+The workflow dashboard is available at:
+
+```text
+http://localhost:5173/#/workflow
 ```
 
 ## Security
