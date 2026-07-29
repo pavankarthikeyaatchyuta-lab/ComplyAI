@@ -16,6 +16,7 @@ import { UploadFailureCard } from "../features/upload/components/UploadFailureCa
 import { UploadPreviewPanel } from "../features/upload/components/UploadPreviewPanel";
 import type { FileValidation, RecentUpload, UploadStatus } from "../features/upload/types";
 import { validateUploadFile } from "../features/upload/validation";
+import { RippleButton } from "../components/motion/RippleButton";
 
 const initialRecentUploads: RecentUpload[] = [
   {
@@ -221,13 +222,13 @@ export function UploadPage() {
                           File validated, OCR indicator completed, and the
                           document is ready for extraction.
                         </p>
-                        <a
+                        <RippleButton
                           data-cursor="button"
                           href="#/workflow"
                           className="mt-4 inline-flex rounded-full bg-white px-4 py-2 text-sm font-extrabold text-navy transition hover:bg-slate-100"
                         >
                           Open Workflow Dashboard
-                        </a>
+                        </RippleButton>
                       </div>
                     </div>
                   </motion.div>
@@ -235,7 +236,7 @@ export function UploadPage() {
               </AnimatePresence>
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <button
+                <RippleButton
                   data-cursor="button"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-emerald px-6 py-3 text-sm font-extrabold text-white shadow-glow transition enabled:hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-45"
                   type="button"
@@ -244,8 +245,8 @@ export function UploadPage() {
                 >
                   <Play className="h-4 w-4" />
                   Start upload
-                </button>
-                <button
+                </RippleButton>
+                <RippleButton
                   data-cursor="button"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.06] px-6 py-3 text-sm font-bold text-white transition hover:bg-white/[0.1]"
                   type="button"
@@ -258,7 +259,7 @@ export function UploadPage() {
                 >
                   <FileWarning className="h-4 w-4" />
                   Reset
-                </button>
+                </RippleButton>
               </div>
             </div>
 

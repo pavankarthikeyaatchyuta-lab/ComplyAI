@@ -66,6 +66,7 @@ Deployment:
 - [Compliance Report](docs/compliance-report.md)
 - [Developer Mode](docs/developer-mode.md)
 - [Custom Cursor](docs/custom-cursor.md)
+- [Micro Animations](docs/micro-animations.md)
 - [Deployment](docs/deployment.md)
 
 ## Local Frontend

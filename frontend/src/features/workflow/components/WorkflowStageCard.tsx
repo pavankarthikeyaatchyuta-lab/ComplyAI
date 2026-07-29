@@ -36,6 +36,13 @@ export function WorkflowStageCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: index * 0.08 }}
     >
+      {isRunning && (
+        <motion.div
+          className="pointer-events-none absolute inset-0 rounded-[1.75rem] border border-sky-300/35"
+          animate={{ opacity: [0.25, 0.7, 0.25] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+        />
+      )}
       <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div className="flex gap-4">
           <div className="relative grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white/[0.06]">

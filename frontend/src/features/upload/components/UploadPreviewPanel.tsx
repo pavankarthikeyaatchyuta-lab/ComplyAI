@@ -1,4 +1,7 @@
 import { CheckCircle2, FileText, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
+import { SkeletonBlock } from "../../../components/motion/SkeletonBlock";
+import { SuccessConfetti } from "../../../components/motion/SuccessConfetti";
 import { formatFileSize } from "../validation";
 import type { FileValidation, UploadStatus } from "../types";
 import { ProgressRing } from "./ProgressRing";
@@ -15,7 +18,8 @@ export function UploadPreviewPanel({
   progress: number;
 }) {
   return (
-    <aside className="glass-panel rounded-[2rem] p-6">
+    <aside className="glass-panel relative overflow-hidden rounded-[2rem] p-6">
+      <SuccessConfetti active={status === "success"} />
       <div className="mb-6 flex items-center justify-between gap-4">
         <div>
           <p className="text-sm text-slate-400">Preview Panel</p>
@@ -30,9 +34,9 @@ export function UploadPreviewPanel({
         <div className="rounded-2xl border border-dashed border-white/18 bg-white/[0.045] p-6">
           <FileText className="h-12 w-12 text-slate-300" />
           <div className="mt-6 space-y-3">
-            <div className="h-3 rounded-full bg-white/20" />
-            <div className="h-3 w-4/5 rounded-full bg-white/14" />
-            <div className="h-3 w-3/5 rounded-full bg-white/10" />
+            <SkeletonBlock className="h-3" />
+            <SkeletonBlock className="h-3 w-4/5" />
+            <SkeletonBlock className="h-3 w-3/5" />
           </div>
         </div>
 
@@ -93,7 +97,12 @@ export function UploadPreviewPanel({
       )}
 
       {status === "success" && (
-        <div className="mt-6 rounded-3xl border border-emerald/25 bg-emerald/10 p-5">
+        <motion.div
+          className="mt-6 rounded-3xl border border-emerald/25 bg-emerald/10 p-5"
+          initial={{ opacity: 0, scale: 0.96, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 260, damping: 22 }}
+        >
           <div className="flex gap-3">
             <ShieldCheck className="h-5 w-5 text-emerald" />
             <div>
@@ -104,7 +113,7 @@ export function UploadPreviewPanel({
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
 
       {validation?.valid && status === "idle" && (

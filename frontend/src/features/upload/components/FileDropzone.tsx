@@ -1,6 +1,7 @@
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Cloud, FileUp, FolderOpen } from "lucide-react";
+import { RippleButton } from "../../../components/motion/RippleButton";
 import { SupportedFileBadges } from "./SupportedFileBadges";
 
 export function FileDropzone({
@@ -68,14 +69,14 @@ export function FileDropzone({
       <div className="relative z-10 mt-6 flex justify-center">
         <SupportedFileBadges />
       </div>
-      <button
+      <RippleButton
         className="relative z-10 mt-7 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-extrabold text-navy transition hover:-translate-y-0.5 hover:bg-slate-100"
         type="button"
         onClick={() => inputRef.current?.click()}
       >
         <FolderOpen className="h-4 w-4" />
         Browse files
-      </button>
+      </RippleButton>
       <input
         ref={inputRef}
         className="hidden"

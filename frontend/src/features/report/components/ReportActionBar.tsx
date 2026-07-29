@@ -1,4 +1,5 @@
 import { Download, FileJson2, Printer } from "lucide-react";
+import { RippleButton } from "../../../components/motion/RippleButton";
 
 export function ReportActionBar() {
   const actions = [
@@ -10,7 +11,7 @@ export function ReportActionBar() {
   return (
     <div className="glass-panel sticky bottom-5 z-20 flex flex-col gap-3 rounded-3xl p-3 sm:flex-row">
       {actions.map((action, index) => (
-        <button
+        <RippleButton
           data-cursor="button"
           key={action.label}
           className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-extrabold transition hover:-translate-y-0.5 ${
@@ -22,7 +23,7 @@ export function ReportActionBar() {
         >
           <action.icon className="h-4 w-4" />
           {action.label}
-        </button>
+        </RippleButton>
       ))}
     </div>
   );
