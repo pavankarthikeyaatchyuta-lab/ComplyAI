@@ -3,8 +3,8 @@ import type { DevMetric, LogEntry, SchemaCheck, TimelineEvent } from "./types";
 export const devMetrics: DevMetric[] = [
   {
     label: "Provider Used",
-    value: "Gemini + Groq",
-    detail: "Planner and reviewer on Gemini, executor on Groq",
+    value: "Groq Primary",
+    detail: "Gemini is reserved for timeout, rate-limit, or schema fallback",
     status: "success"
   },
   {
@@ -16,8 +16,14 @@ export const devMetrics: DevMetric[] = [
   {
     label: "Fallback Provider",
     value: "Ready",
-    detail: "Groq fallback available for planner timeout",
+    detail: "Gemini fallback available after Groq retry failure",
     status: "warning"
+  },
+  {
+    label: "Token Count",
+    value: "3.8k",
+    detail: "Estimated planner, executor, reviewer, and report tokens",
+    status: "success"
   },
   {
     label: "API Timing",
@@ -29,7 +35,7 @@ export const devMetrics: DevMetric[] = [
 
 export const plannerJson = {
   stage: "planner",
-  provider: "Gemini 1.5 Flash",
+  provider: "Groq Llama 3.1",
   objective: "Respond to GST Notice DRC-01 before statutory deadline",
   priority: "high",
   deadline: "2026-07-15",
@@ -62,7 +68,7 @@ export const executorJson = {
 
 export const reviewerJson = {
   stage: "reviewer",
-  provider: "Gemini 1.5 Pro",
+  provider: "Groq Llama 3.1",
   schemaValidation: "passed",
   approvalReadiness: "ready_with_warnings",
   warnings: [
@@ -87,7 +93,7 @@ export const timelineEvents: TimelineEvent[] = [
   {
     id: "planner",
     stage: "Planner",
-    provider: "Gemini 1.5 Flash",
+    provider: "Groq Llama 3.1",
     duration: "1.8s",
     apiTiming: "1.28s",
     status: "success"
@@ -103,7 +109,7 @@ export const timelineEvents: TimelineEvent[] = [
   {
     id: "reviewer",
     stage: "Reviewer",
-    provider: "Gemini 1.5 Pro",
+    provider: "Groq Llama 3.1",
     duration: "0.9s",
     apiTiming: "812ms",
     status: "warning"

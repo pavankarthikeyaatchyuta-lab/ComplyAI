@@ -9,11 +9,11 @@ import {
   FileText,
   Gauge,
   LockKeyhole,
-  ShieldCheck,
   Sparkles,
   UploadCloud
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { BrandMark } from "../components/brand/BrandMark";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 18 },
@@ -149,9 +149,7 @@ function SiteHeader() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy/70 backdrop-blur-2xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
         <a href="#" className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-400 to-emerald shadow-glow">
-            <ShieldCheck className="h-5 w-5 text-white" />
-          </span>
+          <BrandMark size="md" />
           <span className="text-lg font-bold text-white">ComplyAI</span>
         </a>
         <div className="hidden items-center gap-8 text-sm font-medium text-slate-300 md:flex">

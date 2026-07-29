@@ -4,7 +4,7 @@ export const complianceReport: ComplianceReport = {
   documentType: "GST Notice DRC-01",
   priority: "high",
   deadline: "15 Jul 2026",
-  providerUsed: "Gemini 1.5 Pro + Groq Llama 3.1",
+  providerUsed: "Groq Llama 3.1 primary + Gemini fallback",
   reviewStatus: "verified",
   immediateActions: [
     {

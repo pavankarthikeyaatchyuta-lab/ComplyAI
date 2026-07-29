@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { Check, FileText, ShieldCheck, UploadCloud } from "lucide-react";
+import { AlertTriangle, Check, FileText, ShieldCheck, UploadCloud } from "lucide-react";
 
-type CursorMode = "default" | "button" | "upload" | "report" | "agent" | "hidden";
+type CursorMode = "default" | "button" | "upload" | "report" | "agent" | "review" | "error" | "hidden";
 
 type TrailParticle = {
   id: number;
@@ -16,12 +16,15 @@ const cursorLabels: Record<CursorMode, string> = {
   upload: "Upload",
   report: "Report",
   agent: "Agent",
+  review: "Review",
+  error: "Check",
   hidden: ""
 };
 
 function CursorIcon({ mode }: { mode: CursorMode }) {
   if (mode === "upload") return <UploadCloud className="h-4 w-4" />;
   if (mode === "report") return <FileText className="h-4 w-4" />;
+  if (mode === "error") return <AlertTriangle className="h-4 w-4" />;
   if (mode === "agent") return <ShieldCheck className="h-4 w-4" />;
   return <Check className="h-3.5 w-3.5" />;
 }
@@ -68,6 +71,18 @@ export function ComplyCursor() {
         core: "linear-gradient(135deg, #10B981, #2E90FA)",
         glow: "0 0 46px rgba(16, 185, 129, 0.48)"
       },
+      review: {
+        size: 58,
+        ring: "rgba(16, 185, 129, 0.78)",
+        core: "linear-gradient(135deg, #10B981, #34D399)",
+        glow: "0 0 44px rgba(16, 185, 129, 0.5)"
+      },
+      error: {
+        size: 60,
+        ring: "rgba(245, 158, 11, 0.72)",
+        core: "linear-gradient(135deg, #F59E0B, #EF4444)",
+        glow: "0 0 42px rgba(245, 158, 11, 0.38)"
+      },
       hidden: {
         size: 0,
         ring: "transparent",
@@ -101,7 +116,7 @@ export function ComplyCursor() {
       const nextMode = (cursorTarget?.dataset.cursor as CursorMode | undefined)
         ?? (interactiveTarget ? "button" : "default");
 
-      setMode(nextMode);
+      setMode((current) => (current === nextMode ? current : nextMode));
 
       frame += 1;
       if (frame % 3 === 0) {

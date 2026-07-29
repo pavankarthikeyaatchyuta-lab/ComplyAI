@@ -153,7 +153,7 @@ export function ComplianceReportPage() {
           <aside className="space-y-6">
             <ReportSectionCard eyebrow="Verification" title="Review Status">
               <div className="rounded-3xl border border-emerald/25 bg-emerald/10 p-5">
-                <div className="flex gap-4">
+                <div data-cursor="review" className="flex gap-4">
                   <BadgeCheck className="h-6 w-6 text-emerald" />
                   <div>
                     <p className="font-extrabold text-white">
@@ -184,7 +184,7 @@ export function ComplianceReportPage() {
 
             <ReportSectionCard eyebrow="Risk Notes" title="Attention Required">
               <div className="rounded-3xl border border-amber/25 bg-amber/10 p-5">
-                <div className="flex gap-3">
+                <div data-cursor="error" className="flex gap-3">
                   <AlertTriangle className="mt-1 h-5 w-5 shrink-0 text-amber" />
                   <p className="text-sm leading-6 text-amber-50/85">
                     Attach the missing annexure reference and confirm the demand

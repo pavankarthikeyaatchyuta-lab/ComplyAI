@@ -77,7 +77,7 @@ export function DeveloperModePage() {
           </div>
         </header>
 
-        <section className="grid gap-4 py-8 md:grid-cols-2 xl:grid-cols-4">
+        <section className="grid gap-4 py-8 md:grid-cols-2 xl:grid-cols-5">
           {devMetrics.map((metric) => (
             <DevMetricCard key={metric.label} metric={metric} />
           ))}
@@ -103,14 +103,14 @@ export function DeveloperModePage() {
                 <div>
                   <p className="text-sm text-slate-400">Fallback Provider</p>
                   <h2 className="text-xl font-extrabold text-white">
-                    Groq standby
+                    Gemini standby
                   </h2>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
                 {[
-                  ["Primary planner", "Gemini 1.5 Flash"],
-                  ["Fallback planner", "Groq Llama 3.1"],
+                  ["Primary provider", "Groq Llama 3.1"],
+                  ["Fallback provider", "Gemini 1.5 Flash"],
                   ["Retry budget", "2 attempts"],
                   ["Timeout threshold", "8 seconds"]
                 ].map(([label, value]) => (
@@ -161,7 +161,7 @@ export function DeveloperModePage() {
               </div>
             </section>
 
-            <section className="glass-panel rounded-[1.75rem] p-6">
+            <section data-cursor="error" className="glass-panel rounded-[1.75rem] p-6">
               <div className="flex gap-4">
                 <ShieldAlert className="h-6 w-6 text-amber" />
                 <div>
