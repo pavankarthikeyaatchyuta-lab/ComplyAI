@@ -70,6 +70,7 @@ Deployment:
 - [Backend Scaffold](docs/backend-scaffold.md)
 - [LLM Client](docs/llm-client.md)
 - [Planner](docs/planner.md)
+- [Executor](docs/executor.md)
 - [Deployment](docs/deployment.md)
 
 ## Local Frontend
