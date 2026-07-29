@@ -71,6 +71,7 @@ Deployment:
 - [LLM Client](docs/llm-client.md)
 - [Planner](docs/planner.md)
 - [Executor](docs/executor.md)
+- [Reviewer](docs/reviewer.md)
 - [Deployment](docs/deployment.md)
 
 ## Local Frontend

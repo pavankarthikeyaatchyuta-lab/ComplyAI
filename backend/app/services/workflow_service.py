@@ -4,6 +4,7 @@ from uuid import uuid4
 
 from app.core.config import Settings
 from app.core.errors import ComplyAIError
+from app.domain.compliance import WORKFLOW_REVISION_LIMIT
 from app.schemas.review import RevisionRequest, ReviewResponse
 from app.schemas.workflow import (
     StageStatus,
@@ -41,7 +42,10 @@ class WorkflowService:
         """Run planner, executor, and reviewer stages for a workflow."""
         planner_stage, _planner_artifact = self.planner.run(workflow_id)
         executor_stage, _executor_artifact = self.executor.run(_planner_artifact)
-        reviewer_stage, _reviewer_artifact = self.reviewer.run(_executor_artifact)
+        reviewer_stage, _reviewer_artifact = self.reviewer.run(
+            _executor_artifact,
+            planner_artifact=_planner_artifact,
+        )
 
         stages: list[WorkflowStageResult] = [
             WorkflowStageResult(
@@ -75,7 +79,10 @@ class WorkflowService:
         """Return planner, executor, and reviewer JSON artifacts."""
         _, planner_artifact = self.planner.run(workflow_id)
         _, executor_artifact = self.executor.run(planner_artifact)
-        _, reviewer_artifact = self.reviewer.run(executor_artifact)
+        _, reviewer_artifact = self.reviewer.run(
+            executor_artifact,
+            planner_artifact=planner_artifact,
+        )
         return WorkflowArtifacts(
             planner=planner_artifact,
             executor=executor_artifact,
@@ -86,13 +93,23 @@ class WorkflowService:
         """Return review status for a workflow."""
         return self.reviewer.get_review(workflow_id)
 
-    def submit_revision(self, workflow_id: str, revision: RevisionRequest) -> WorkflowResponse:
+    def submit_revision(
+        self,
+        workflow_id: str,
+        revision: RevisionRequest,
+        current_revision_count: int = 0,
+    ) -> WorkflowResponse:
         """Apply the single allowed revision request."""
         if not revision.details:
             raise ComplyAIError("EMPTY_REVISION", "Revision details are required.")
+        if current_revision_count >= WORKFLOW_REVISION_LIMIT:
+            raise ComplyAIError(
+                "REVISION_LIMIT_REACHED",
+                "Only one revision is allowed for this workflow.",
+            )
 
         response = self.run_workflow(workflow_id)
-        response.revision_count = 1
+        response.revision_count = current_revision_count + 1
         response.current_stage = WorkflowStageName.REVISION
         return response
 
