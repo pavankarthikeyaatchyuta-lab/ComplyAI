@@ -3,6 +3,7 @@
 from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
 
+from app.integrations.llm_client import LLMServiceUnavailable
 from app.schemas.common import ApiError, ApiResponse
 
 
@@ -27,6 +28,15 @@ def register_exception_handlers(app: FastAPI) -> None:
             error=ApiError(code=exc.code, message=exc.message),
         )
         return JSONResponse(status_code=exc.status_code, content=body.model_dump())
+
+    @app.exception_handler(LLMServiceUnavailable)
+    async def handle_llm_unavailable(_: Request, exc: LLMServiceUnavailable) -> JSONResponse:
+        body = ApiResponse[None](
+            success=False,
+            data=None,
+            error=ApiError(code="LLM_SERVICE_UNAVAILABLE", message=str(exc)),
+        )
+        return JSONResponse(status_code=503, content=body.model_dump())
 
     @app.exception_handler(Exception)
     async def handle_unexpected_error(_: Request, exc: Exception) -> JSONResponse:

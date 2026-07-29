@@ -68,6 +68,7 @@ Deployment:
 - [Custom Cursor](docs/custom-cursor.md)
 - [Micro Animations](docs/micro-animations.md)
 - [Backend Scaffold](docs/backend-scaffold.md)
+- [LLM Client](docs/llm-client.md)
 - [Deployment](docs/deployment.md)
 
 ## Local Frontend
@@ -111,3 +112,4 @@ http://localhost:5173/#/developer
 ## Security
 
 API keys and provider secrets must not be committed to this repository. Use deployment environment variables and local `.env` files based on `.env.example`.
+
