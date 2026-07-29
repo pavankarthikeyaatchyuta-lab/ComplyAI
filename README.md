@@ -67,6 +67,7 @@ Deployment:
 - [Developer Mode](docs/developer-mode.md)
 - [Custom Cursor](docs/custom-cursor.md)
 - [Micro Animations](docs/micro-animations.md)
+- [Backend Scaffold](docs/backend-scaffold.md)
 - [Deployment](docs/deployment.md)
 
 ## Local Frontend
