@@ -72,6 +72,8 @@ Deployment:
 - [Planner](docs/planner.md)
 - [Executor](docs/executor.md)
 - [Reviewer](docs/reviewer.md)
+- [Final Code Review](docs/final-code-review.md)
+- [Hackathon-Winning Review](docs/hackathon-winning-review.md)
 - [Deployment](docs/deployment.md)
 
 ## Local Frontend
