@@ -22,7 +22,7 @@ class WorkflowService:
 
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
-        self.planner = PlannerService()
+        self.planner = PlannerService(settings=settings)
         self.executor = ExecutorService()
         self.reviewer = ReviewerService()
 

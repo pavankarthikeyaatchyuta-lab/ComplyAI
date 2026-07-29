@@ -1,0 +1,6 @@
+Document: ASMT-10 Notice
+GSTIN: 33ABCDE1234F1Z9
+Tax period: FY 2025-26
+Notice summary: Scrutiny notice seeking explanation for ITC mismatch.
+Deadline: 20 Aug 2026
+Expected action: Prepare explanation and attach ITC reconciliation.

@@ -1,0 +1,6 @@
+Document: GST Tax Invoice
+GSTIN: 07ABCDE1234F1Z1
+Invoice number: INV-2026-118
+Invoice date: 05 Jul 2026
+Notice summary: Invoice validation required for input tax credit records.
+Expected action: Verify supplier GSTIN, tax amount, place of supply, and invoice date.

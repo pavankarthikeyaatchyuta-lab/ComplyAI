@@ -1,0 +1,6 @@
+Document: GST Notice DRC-01
+GSTIN: 29ABCDE1234F1Z5
+Tax period: April 2026
+Notice summary: Demand notice issued for mismatch in outward supplies.
+Deadline: 15 Jul 2026
+Expected action: Prepare response with reconciliation and supporting invoices.

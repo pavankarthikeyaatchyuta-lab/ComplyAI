@@ -69,6 +69,7 @@ Deployment:
 - [Micro Animations](docs/micro-animations.md)
 - [Backend Scaffold](docs/backend-scaffold.md)
 - [LLM Client](docs/llm-client.md)
+- [Planner](docs/planner.md)
 - [Deployment](docs/deployment.md)
 
 ## Local Frontend

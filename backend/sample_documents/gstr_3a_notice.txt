@@ -1,0 +1,6 @@
+Document: GSTR-3A Notice
+GSTIN: 27ABCDE1234F1Z2
+Tax period: May 2026
+Notice summary: Return filing reminder for non-filing of GSTR-3B.
+Deadline: 10 Aug 2026
+Expected action: File pending return and verify late fee exposure.

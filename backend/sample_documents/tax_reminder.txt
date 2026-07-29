@@ -1,0 +1,5 @@
+Document: Tax Reminder
+GSTIN: 19ABCDE1234F1Z3
+Reminder summary: Upcoming GST return due date reminder.
+Deadline: 11 Aug 2026
+Expected action: Prepare records, verify liability, and complete filing before due date.
