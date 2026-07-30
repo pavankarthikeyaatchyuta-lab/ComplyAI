@@ -15,5 +15,8 @@ dependencies = [
   "python-multipart==0.0.20"
 ]
 
+[tool.hatch.build.targets.wheel]
+packages = ["backend"]
+
 [tool.vercel]
 entrypoint = "backend.app.main:app"
