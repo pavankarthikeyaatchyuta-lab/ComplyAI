@@ -1,0 +1,6 @@
+backend/
+api/
+pyproject.toml
+requirements.txt
+README.md
+docs/
