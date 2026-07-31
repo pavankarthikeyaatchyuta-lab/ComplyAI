@@ -191,20 +191,29 @@ export function ComplyCursor() {
           }}
         >
           <span
-            className="absolute left-1/2 top-1/2 block origin-center rounded-[2px] border border-white/70 bg-white/85 shadow-[0_0_10px_rgba(255,255,255,0.32)]"
+            className="absolute left-1/2 top-1/2 block origin-top-left bg-white/92 shadow-[0_0_10px_rgba(255,255,255,0.28)]"
             style={{
-              width: Math.max(11, config.size * 0.26),
-              height: Math.max(11, config.size * 0.26),
-              transform: "translate(-72%, -78%) rotate(45deg)",
-              clipPath: "polygon(0 0, 100% 20%, 72% 100%, 42% 62%, 0 100%)"
+              width: Math.max(10, config.size * 0.22),
+              height: Math.max(16, config.size * 0.46),
+              transform: "translate(-40%, -78%) rotate(42deg)",
+              clipPath: "polygon(0 0, 100% 18%, 76% 18%, 76% 100%, 50% 100%, 36% 70%, 18% 82%, 0 58%)"
             }}
           />
           <span
-            className="absolute left-1/2 top-1/2 block rounded-full bg-sky-300/70"
+            className="absolute left-1/2 top-1/2 block origin-top-left bg-sky-300/88"
             style={{
-              width: Math.max(4, config.size * 0.08),
-              height: Math.max(4, config.size * 0.08),
-              transform: "translate(-50%, -50%)"
+              width: Math.max(6, config.size * 0.12),
+              height: Math.max(10, config.size * 0.25),
+              transform: "translate(-44%, -58%) rotate(42deg)",
+              clipPath: "polygon(0 0, 100% 18%, 74% 18%, 74% 100%, 46% 100%, 0 64%)"
+            }}
+          />
+          <span
+            className="absolute left-1/2 top-1/2 block rounded-full bg-white/80"
+            style={{
+              width: Math.max(3, config.size * 0.06),
+              height: Math.max(3, config.size * 0.06),
+              transform: "translate(-72%, -82%)"
             }}
           />
           {(mode === "upload" || mode === "report" || mode === "agent" || mode === "review" || mode === "error") && (
