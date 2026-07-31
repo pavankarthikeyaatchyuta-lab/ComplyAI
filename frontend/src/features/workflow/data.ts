@@ -41,24 +41,24 @@ export const workflowStages: WorkflowStage[] = [
     id: "revision",
     title: "Revision",
     description: "Allows one controlled correction before the final report.",
-    status: "pending",
-    executionTime: "-",
+    status: "completed",
+    executionTime: "0.0s",
     provider: "Workflow Policy",
     outputSummary:
-      "Revision remains available if the reviewer flags a material correction.",
+      "No revision required; reviewer approval moves the workflow directly to the final report.",
     issues: [],
-    progress: 0
+    progress: 100
   },
   {
     id: "report",
     title: "Compliance Report",
     description: "Packages verified artifacts into the final action report.",
-    status: "pending",
-    executionTime: "-",
+    status: "running",
+    executionTime: "0.4s",
     provider: "Report Composer",
     outputSummary:
-      "Waiting for reviewer approval before generating final compliance action report.",
+      "Assembling the final compliance action report from verified planner, executor, and reviewer output.",
     issues: [],
-    progress: 0
+    progress: 64
   }
 ];
