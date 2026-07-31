@@ -31,46 +31,46 @@ export function ComplyCursor() {
   const config = useMemo(() => {
     const configs = {
       default: {
-        size: 26,
-        ring: "rgba(125, 211, 252, 0.42)",
-        core: "linear-gradient(135deg, #2E90FA, #10B981)",
-        glow: "0 0 18px rgba(46, 144, 250, 0.24)"
+        size: 34,
+        ring: "rgba(255, 255, 255, 0.58)",
+        core: "linear-gradient(135deg, #FFFFFF, #DCEBFF)",
+        glow: "0 0 22px rgba(56, 189, 248, 0.24)"
       },
       button: {
-        size: 44,
-        ring: "rgba(125, 211, 252, 0.5)",
-        core: "linear-gradient(135deg, #155EEF, #10B981)",
-        glow: "0 0 24px rgba(46, 144, 250, 0.3)"
+        size: 46,
+        ring: "rgba(125, 211, 252, 0.72)",
+        core: "linear-gradient(135deg, #FFFFFF, #9DD8FF)",
+        glow: "0 0 28px rgba(46, 144, 250, 0.34)"
       },
       upload: {
         size: 48,
-        ring: "rgba(46, 144, 250, 0.52)",
-        core: "linear-gradient(135deg, #2E90FA, #38BDF8)",
+        ring: "rgba(46, 144, 250, 0.7)",
+        core: "linear-gradient(135deg, #FFFFFF, #7DD3FC)",
         glow: "0 0 26px rgba(56, 189, 248, 0.28)"
       },
       report: {
         size: 46,
-        ring: "rgba(203, 213, 225, 0.42)",
-        core: "linear-gradient(135deg, #E2E8F0, #2E90FA)",
-        glow: "0 0 22px rgba(226, 232, 240, 0.2)"
+        ring: "rgba(203, 213, 225, 0.72)",
+        core: "linear-gradient(135deg, #FFFFFF, #E2E8F0)",
+        glow: "0 0 22px rgba(226, 232, 240, 0.24)"
       },
       agent: {
         size: 46,
-        ring: "rgba(16, 185, 129, 0.5)",
-        core: "linear-gradient(135deg, #10B981, #2E90FA)",
-        glow: "0 0 22px rgba(16, 185, 129, 0.24)"
+        ring: "rgba(16, 185, 129, 0.72)",
+        core: "linear-gradient(135deg, #FFFFFF, #A7F3D0)",
+        glow: "0 0 22px rgba(16, 185, 129, 0.28)"
       },
       review: {
         size: 46,
-        ring: "rgba(16, 185, 129, 0.52)",
-        core: "linear-gradient(135deg, #10B981, #34D399)",
-        glow: "0 0 22px rgba(16, 185, 129, 0.24)"
+        ring: "rgba(16, 185, 129, 0.72)",
+        core: "linear-gradient(135deg, #FFFFFF, #6EE7B7)",
+        glow: "0 0 22px rgba(16, 185, 129, 0.28)"
       },
       error: {
         size: 46,
-        ring: "rgba(245, 158, 11, 0.5)",
-        core: "linear-gradient(135deg, #F59E0B, #EF4444)",
-        glow: "0 0 22px rgba(245, 158, 11, 0.22)"
+        ring: "rgba(245, 158, 11, 0.72)",
+        core: "linear-gradient(135deg, #FFFFFF, #FDE68A)",
+        glow: "0 0 22px rgba(245, 158, 11, 0.28)"
       },
       hidden: {
         size: 0,
@@ -156,7 +156,7 @@ export function ComplyCursor() {
       ))}
 
       <motion.div
-        className="absolute backdrop-blur-sm"
+        className="absolute rounded-full border border-white/25 backdrop-blur-sm"
         style={{
           x: springX,
           y: springY,
@@ -191,33 +191,33 @@ export function ComplyCursor() {
           }}
         >
           <span
-            className="absolute left-1/2 top-1/2 block origin-top-left bg-white/92 shadow-[0_0_10px_rgba(255,255,255,0.28)]"
+            className="absolute left-1/2 top-1/2 block origin-top-left bg-white shadow-[0_0_12px_rgba(255,255,255,0.42)]"
             style={{
-              width: Math.max(10, config.size * 0.22),
-              height: Math.max(16, config.size * 0.46),
-              transform: "translate(-40%, -78%) rotate(42deg)",
-              clipPath: "polygon(0 0, 100% 18%, 76% 18%, 76% 100%, 50% 100%, 36% 70%, 18% 82%, 0 58%)"
+              width: Math.max(14, config.size * 0.3),
+              height: Math.max(20, config.size * 0.54),
+              transform: "translate(-42%, -76%) rotate(42deg)",
+              clipPath: "polygon(0 0, 100% 16%, 69% 16%, 69% 100%, 47% 100%, 34% 72%, 18% 82%, 0 58%)"
             }}
           />
           <span
-            className="absolute left-1/2 top-1/2 block origin-top-left bg-sky-300/88"
+            className="absolute left-1/2 top-1/2 block origin-top-left bg-sky-300"
             style={{
-              width: Math.max(6, config.size * 0.12),
-              height: Math.max(10, config.size * 0.25),
-              transform: "translate(-44%, -58%) rotate(42deg)",
-              clipPath: "polygon(0 0, 100% 18%, 74% 18%, 74% 100%, 46% 100%, 0 64%)"
+              width: Math.max(8, config.size * 0.16),
+              height: Math.max(12, config.size * 0.3),
+              transform: "translate(-47%, -60%) rotate(42deg)",
+              clipPath: "polygon(0 0, 100% 16%, 72% 16%, 72% 100%, 46% 100%, 0 64%)"
             }}
           />
           <span
-            className="absolute left-1/2 top-1/2 block rounded-full bg-white/80"
+            className="absolute left-1/2 top-1/2 block rounded-full bg-navy"
             style={{
-              width: Math.max(3, config.size * 0.06),
-              height: Math.max(3, config.size * 0.06),
-              transform: "translate(-72%, -82%)"
+              width: Math.max(4, config.size * 0.08),
+              height: Math.max(4, config.size * 0.08),
+              transform: "translate(-73%, -82%)"
             }}
           />
           {(mode === "upload" || mode === "report" || mode === "agent" || mode === "review" || mode === "error") && (
-            <span className="absolute -right-2 -bottom-1 rounded-full border border-white/10 bg-navy/80 p-1.5 text-white shadow-glass">
+            <span className="absolute -right-2 -bottom-1 rounded-full border border-white/10 bg-navy/90 p-1.5 text-white shadow-glass">
               <CursorIcon mode={mode} />
             </span>
           )}
