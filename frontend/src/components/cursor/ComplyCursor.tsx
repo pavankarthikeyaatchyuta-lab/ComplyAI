@@ -190,32 +190,40 @@ export function ComplyCursor() {
             ease: "easeInOut"
           }}
         >
-          <span
-            className="absolute left-1/2 top-1/2 block origin-top-left bg-white shadow-[0_0_12px_rgba(255,255,255,0.42)]"
+          <svg
+            className="absolute left-1/2 top-1/2 drop-shadow-[0_0_10px_rgba(255,255,255,0.32)]"
+            viewBox="0 0 100 100"
+            aria-hidden="true"
             style={{
-              width: Math.max(14, config.size * 0.3),
-              height: Math.max(20, config.size * 0.54),
-              transform: "translate(-42%, -76%) rotate(42deg)",
-              clipPath: "polygon(0 0, 100% 16%, 69% 16%, 69% 100%, 47% 100%, 34% 72%, 18% 82%, 0 58%)"
+              width: Math.max(42, config.size * 1.15),
+              height: Math.max(42, config.size * 1.15),
+              transform: "translate(-52%, -54%) rotate(38deg)",
+              overflow: "visible"
             }}
-          />
-          <span
-            className="absolute left-1/2 top-1/2 block origin-top-left bg-sky-300"
-            style={{
-              width: Math.max(8, config.size * 0.16),
-              height: Math.max(12, config.size * 0.3),
-              transform: "translate(-47%, -60%) rotate(42deg)",
-              clipPath: "polygon(0 0, 100% 16%, 72% 16%, 72% 100%, 46% 100%, 0 64%)"
-            }}
-          />
-          <span
-            className="absolute left-1/2 top-1/2 block rounded-full bg-navy"
-            style={{
-              width: Math.max(4, config.size * 0.08),
-              height: Math.max(4, config.size * 0.08),
-              transform: "translate(-73%, -82%)"
-            }}
-          />
+          >
+            <defs>
+              <linearGradient id="swordBlade" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#ffffff" />
+                <stop offset="55%" stopColor="#dbeafe" />
+                <stop offset="100%" stopColor="#38bdf8" />
+              </linearGradient>
+              <linearGradient id="swordGuard" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#0f172a" />
+                <stop offset="100%" stopColor="#1d4ed8" />
+              </linearGradient>
+            </defs>
+
+            <path
+              d="M50 8 L60 18 L57 48 L43 48 L40 18 Z"
+              fill="url(#swordBlade)"
+              stroke="rgba(255,255,255,0.85)"
+              strokeWidth="2"
+            />
+            <rect x="44" y="48" width="12" height="26" rx="4" fill="url(#swordGuard)" />
+            <rect x="30" y="56" width="40" height="7" rx="3.5" fill="#e2e8f0" />
+            <path d="M50 74 L56 89 H44 Z" fill="#cbd5e1" stroke="rgba(255,255,255,0.8)" strokeWidth="1.5" />
+            <circle cx="50" cy="52" r="3.2" fill="#0ea5e9" />
+          </svg>
           {(mode === "upload" || mode === "report" || mode === "agent" || mode === "review" || mode === "error") && (
             <span className="absolute -right-2 -bottom-1 rounded-full border border-white/10 bg-navy/90 p-1.5 text-white shadow-glass">
               <CursorIcon mode={mode} />
