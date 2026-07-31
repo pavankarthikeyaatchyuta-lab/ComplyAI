@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { AlertTriangle, Check, FileText, ShieldCheck, UploadCloud } from "lucide-react";
+import { AlertTriangle, FileText, ShieldCheck, UploadCloud } from "lucide-react";
 
 type CursorMode = "default" | "button" | "upload" | "report" | "agent" | "review" | "error" | "hidden";
 
@@ -15,7 +15,7 @@ function CursorIcon({ mode }: { mode: CursorMode }) {
   if (mode === "report") return <FileText className="h-3.5 w-3.5" />;
   if (mode === "error") return <AlertTriangle className="h-3.5 w-3.5" />;
   if (mode === "agent") return <ShieldCheck className="h-3.5 w-3.5" />;
-  return <Check className="h-3 w-3" />;
+  return null;
 }
 
 export function ComplyCursor() {
@@ -31,43 +31,43 @@ export function ComplyCursor() {
   const config = useMemo(() => {
     const configs = {
       default: {
-        size: 24,
+        size: 26,
         ring: "rgba(125, 211, 252, 0.42)",
         core: "linear-gradient(135deg, #2E90FA, #10B981)",
         glow: "0 0 18px rgba(46, 144, 250, 0.24)"
       },
       button: {
-        size: 42,
+        size: 44,
         ring: "rgba(125, 211, 252, 0.5)",
         core: "linear-gradient(135deg, #155EEF, #10B981)",
         glow: "0 0 24px rgba(46, 144, 250, 0.3)"
       },
       upload: {
-        size: 46,
+        size: 48,
         ring: "rgba(46, 144, 250, 0.52)",
         core: "linear-gradient(135deg, #2E90FA, #38BDF8)",
         glow: "0 0 26px rgba(56, 189, 248, 0.28)"
       },
       report: {
-        size: 44,
+        size: 46,
         ring: "rgba(203, 213, 225, 0.42)",
         core: "linear-gradient(135deg, #E2E8F0, #2E90FA)",
         glow: "0 0 22px rgba(226, 232, 240, 0.2)"
       },
       agent: {
-        size: 44,
+        size: 46,
         ring: "rgba(16, 185, 129, 0.5)",
         core: "linear-gradient(135deg, #10B981, #2E90FA)",
         glow: "0 0 22px rgba(16, 185, 129, 0.24)"
       },
       review: {
-        size: 44,
+        size: 46,
         ring: "rgba(16, 185, 129, 0.52)",
         core: "linear-gradient(135deg, #10B981, #34D399)",
         glow: "0 0 22px rgba(16, 185, 129, 0.24)"
       },
       error: {
-        size: 44,
+        size: 46,
         ring: "rgba(245, 158, 11, 0.5)",
         core: "linear-gradient(135deg, #F59E0B, #EF4444)",
         glow: "0 0 22px rgba(245, 158, 11, 0.22)"
@@ -156,7 +156,7 @@ export function ComplyCursor() {
       ))}
 
       <motion.div
-        className="absolute grid place-items-center rounded-full border border-white/12 backdrop-blur-sm"
+        className="absolute backdrop-blur-sm"
         style={{
           x: springX,
           y: springY,
@@ -175,14 +175,14 @@ export function ComplyCursor() {
         transition={{ duration: 0.15 }}
       >
         <motion.div
-          className="grid place-items-center rounded-full text-white"
+          className="relative h-full w-full"
           style={{
-            width: Math.max(14, config.size * 0.42),
-            height: Math.max(14, config.size * 0.42),
-            background: config.core
+            width: config.size,
+            height: config.size
           }}
           animate={{
-            scale: mode === "default" ? [1, 1.06, 1] : 1
+            rotate: mode === "button" ? -6 : mode === "upload" ? 8 : 0,
+            scale: mode === "default" ? [1, 1.04, 1] : 1
           }}
           transition={{
             duration: 1.5,
@@ -190,7 +190,28 @@ export function ComplyCursor() {
             ease: "easeInOut"
           }}
         >
-          <CursorIcon mode={mode} />
+          <span
+            className="absolute left-1/2 top-1/2 block origin-center rounded-[2px] border border-white/70 bg-white/85 shadow-[0_0_10px_rgba(255,255,255,0.32)]"
+            style={{
+              width: Math.max(11, config.size * 0.26),
+              height: Math.max(11, config.size * 0.26),
+              transform: "translate(-72%, -78%) rotate(45deg)",
+              clipPath: "polygon(0 0, 100% 20%, 72% 100%, 42% 62%, 0 100%)"
+            }}
+          />
+          <span
+            className="absolute left-1/2 top-1/2 block rounded-full bg-sky-300/70"
+            style={{
+              width: Math.max(4, config.size * 0.08),
+              height: Math.max(4, config.size * 0.08),
+              transform: "translate(-50%, -50%)"
+            }}
+          />
+          {(mode === "upload" || mode === "report" || mode === "agent" || mode === "review" || mode === "error") && (
+            <span className="absolute -right-2 -bottom-1 rounded-full border border-white/10 bg-navy/80 p-1.5 text-white shadow-glass">
+              <CursorIcon mode={mode} />
+            </span>
+          )}
         </motion.div>
       </motion.div>
     </div>
