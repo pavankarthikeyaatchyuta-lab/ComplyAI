@@ -10,23 +10,12 @@ type TrailParticle = {
   y: number;
 };
 
-const cursorLabels: Record<CursorMode, string> = {
-  default: "Verify",
-  button: "Open",
-  upload: "Upload",
-  report: "Report",
-  agent: "Agent",
-  review: "Review",
-  error: "Check",
-  hidden: ""
-};
-
 function CursorIcon({ mode }: { mode: CursorMode }) {
-  if (mode === "upload") return <UploadCloud className="h-4 w-4" />;
-  if (mode === "report") return <FileText className="h-4 w-4" />;
-  if (mode === "error") return <AlertTriangle className="h-4 w-4" />;
-  if (mode === "agent") return <ShieldCheck className="h-4 w-4" />;
-  return <Check className="h-3.5 w-3.5" />;
+  if (mode === "upload") return <UploadCloud className="h-3.5 w-3.5" />;
+  if (mode === "report") return <FileText className="h-3.5 w-3.5" />;
+  if (mode === "error") return <AlertTriangle className="h-3.5 w-3.5" />;
+  if (mode === "agent") return <ShieldCheck className="h-3.5 w-3.5" />;
+  return <Check className="h-3 w-3" />;
 }
 
 export function ComplyCursor() {
@@ -42,46 +31,46 @@ export function ComplyCursor() {
   const config = useMemo(() => {
     const configs = {
       default: {
-        size: 34,
-        ring: "rgba(46, 144, 250, 0.42)",
+        size: 24,
+        ring: "rgba(125, 211, 252, 0.42)",
         core: "linear-gradient(135deg, #2E90FA, #10B981)",
-        glow: "0 0 28px rgba(46, 144, 250, 0.34)"
+        glow: "0 0 18px rgba(46, 144, 250, 0.24)"
       },
       button: {
-        size: 58,
-        ring: "rgba(125, 211, 252, 0.62)",
+        size: 42,
+        ring: "rgba(125, 211, 252, 0.5)",
         core: "linear-gradient(135deg, #155EEF, #10B981)",
-        glow: "0 0 42px rgba(46, 144, 250, 0.52)"
+        glow: "0 0 24px rgba(46, 144, 250, 0.3)"
       },
       upload: {
-        size: 66,
-        ring: "rgba(46, 144, 250, 0.72)",
+        size: 46,
+        ring: "rgba(46, 144, 250, 0.52)",
         core: "linear-gradient(135deg, #2E90FA, #38BDF8)",
-        glow: "0 0 46px rgba(56, 189, 248, 0.5)"
+        glow: "0 0 26px rgba(56, 189, 248, 0.28)"
       },
       report: {
-        size: 62,
-        ring: "rgba(203, 213, 225, 0.5)",
+        size: 44,
+        ring: "rgba(203, 213, 225, 0.42)",
         core: "linear-gradient(135deg, #E2E8F0, #2E90FA)",
-        glow: "0 0 42px rgba(226, 232, 240, 0.26)"
+        glow: "0 0 22px rgba(226, 232, 240, 0.2)"
       },
       agent: {
-        size: 62,
-        ring: "rgba(16, 185, 129, 0.72)",
+        size: 44,
+        ring: "rgba(16, 185, 129, 0.5)",
         core: "linear-gradient(135deg, #10B981, #2E90FA)",
-        glow: "0 0 46px rgba(16, 185, 129, 0.48)"
+        glow: "0 0 22px rgba(16, 185, 129, 0.24)"
       },
       review: {
-        size: 58,
-        ring: "rgba(16, 185, 129, 0.78)",
+        size: 44,
+        ring: "rgba(16, 185, 129, 0.52)",
         core: "linear-gradient(135deg, #10B981, #34D399)",
-        glow: "0 0 44px rgba(16, 185, 129, 0.5)"
+        glow: "0 0 22px rgba(16, 185, 129, 0.24)"
       },
       error: {
-        size: 60,
-        ring: "rgba(245, 158, 11, 0.72)",
+        size: 44,
+        ring: "rgba(245, 158, 11, 0.5)",
         core: "linear-gradient(135deg, #F59E0B, #EF4444)",
-        glow: "0 0 42px rgba(245, 158, 11, 0.38)"
+        glow: "0 0 22px rgba(245, 158, 11, 0.22)"
       },
       hidden: {
         size: 0,
@@ -158,16 +147,16 @@ export function ComplyCursor() {
       {trail.map((particle) => (
         <motion.span
           key={particle.id}
-          className="absolute h-2 w-2 rounded-full bg-sky-300/55 blur-[1px]"
-          style={{ left: particle.x - 4, top: particle.y - 4 }}
-          initial={{ opacity: 0.5, scale: 1 }}
-          animate={{ opacity: 0, scale: 0.1, y: 14 }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
+          className="absolute h-1.5 w-1.5 rounded-full bg-sky-300/25 blur-[0.5px]"
+          style={{ left: particle.x - 3, top: particle.y - 3 }}
+          initial={{ opacity: 0.35, scale: 1 }}
+          animate={{ opacity: 0, scale: 0.2, y: 8 }}
+          transition={{ duration: 0.38, ease: "easeOut" }}
         />
       ))}
 
       <motion.div
-        className="absolute grid place-items-center rounded-full border backdrop-blur-sm"
+        className="absolute grid place-items-center rounded-full border border-white/12 backdrop-blur-sm"
         style={{
           x: springX,
           y: springY,
@@ -177,10 +166,10 @@ export function ComplyCursor() {
           height: config.size,
           borderColor: config.ring,
           boxShadow: config.glow,
-          background: "rgba(7, 26, 47, 0.28)"
+          background: "rgba(7, 26, 47, 0.18)"
         }}
         animate={{
-          scale: pressed ? 0.82 : 1,
+          scale: pressed ? 0.92 : 1,
           opacity: mode === "hidden" ? 0 : 1
         }}
         transition={{ duration: 0.15 }}
@@ -188,31 +177,21 @@ export function ComplyCursor() {
         <motion.div
           className="grid place-items-center rounded-full text-white"
           style={{
-            width: Math.max(18, config.size * 0.42),
-            height: Math.max(18, config.size * 0.42),
+            width: Math.max(14, config.size * 0.42),
+            height: Math.max(14, config.size * 0.42),
             background: config.core
           }}
           animate={{
-            scale: mode === "default" ? [1, 1.14, 1] : 1
+            scale: mode === "default" ? [1, 1.06, 1] : 1
           }}
           transition={{
-            duration: 1.25,
+            duration: 1.5,
             repeat: mode === "default" ? Infinity : 0,
             ease: "easeInOut"
           }}
         >
           <CursorIcon mode={mode} />
         </motion.div>
-
-        {mode !== "default" && mode !== "hidden" && (
-          <motion.span
-            className="absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/10 bg-navy/85 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.16em] text-slate-100 shadow-glass"
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            {cursorLabels[mode]}
-          </motion.span>
-        )}
       </motion.div>
     </div>
   );
