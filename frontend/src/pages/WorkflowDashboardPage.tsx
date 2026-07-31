@@ -13,14 +13,10 @@ import { workflowStages } from "../features/workflow/data";
 import { WorkflowTimeline } from "../features/workflow/components/WorkflowTimeline";
 
 export function WorkflowDashboardPage() {
-  const [livePulse, setLivePulse] = useState(72);
+  const [livePulse, setLivePulse] = useState(100);
 
   useEffect(() => {
-    const interval = window.setInterval(() => {
-      setLivePulse((current) => (current >= 88 ? 72 : current + 2));
-    }, 900);
-
-    return () => window.clearInterval(interval);
+    setLivePulse(100);
   }, []);
 
   const completedStages = useMemo(

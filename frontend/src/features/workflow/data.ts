@@ -41,12 +41,12 @@ export const workflowStages: WorkflowStage[] = [
     id: "report",
     title: "Compliance Report",
     description: "Packages verified artifacts into the final action report.",
-    status: "running",
-    executionTime: "0.4s",
+    status: "completed",
+    executionTime: "1.2s",
     provider: "Report Composer",
     outputSummary:
-      "Assembling the final compliance action report from verified planner, executor, and reviewer output.",
+      "Final compliance action report generated and ready for download, export, and review.",
     issues: [],
-    progress: 64
+    progress: 100
   }
 ];
