@@ -1,10 +1,10 @@
 # ComplyAI
 
-ComplyAI turns compliance documents into verified action plans.
+🔍 **ComplyAI** turns compliance documents into verified action plans.
 
 Built for the ChatGPT Codex India Hackathon 2026, ComplyAI is designed as a workflow application, not a chatbot. A user uploads a GST notice, GST invoice, or tax reminder, and the system produces a structured compliance action report through extraction, planning, execution, review, and one optional revision.
 
-## Product Flow
+## 🚦 Product Flow
 
 ```text
 Upload
@@ -28,7 +28,7 @@ v
 Compliance Report
 ```
 
-## Planned Stack
+## 🧱 Planned Stack
 
 Frontend:
 
@@ -53,7 +53,7 @@ Deployment:
 - Frontend: Vercel
 - Backend: Render
 
-## Architecture Documents
+## 📚 Architecture Documents
 
 - [Architecture](docs/architecture.md)
 - [Folder Structure](docs/folder-structure.md)
@@ -76,7 +76,7 @@ Deployment:
 - [Hackathon-Winning Review](docs/hackathon-winning-review.md)
 - [Deployment](docs/deployment.md)
 
-## Local Frontend
+## 💻 Local Frontend
 
 ```bash
 cd frontend
@@ -114,7 +114,7 @@ Developer Mode is available at:
 http://localhost:5173/#/developer
 ```
 
-## Security
+## 🔐 Security
 
 API keys and provider secrets must not be committed to this repository. Use deployment environment variables and local `.env` files based on `.env.example`.
 
