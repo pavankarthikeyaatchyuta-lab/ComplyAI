@@ -197,7 +197,7 @@ export function ComplyCursor() {
             style={{
               width: Math.max(42, config.size * 1.15),
               height: Math.max(42, config.size * 1.15),
-              transform: "translate(-52%, -54%) rotate(-38deg)",
+              transform: "translate(-52%, -54%) rotate(38deg) scaleX(-1)",
               overflow: "visible"
             }}
           >

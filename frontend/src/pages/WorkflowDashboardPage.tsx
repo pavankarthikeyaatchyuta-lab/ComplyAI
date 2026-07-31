@@ -50,15 +50,14 @@ export function WorkflowDashboardPage() {
                 Workflow Dashboard
               </h1>
               <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
-                Track Planner, Executor, Reviewer, Revision, and Compliance
-                Report stages as structured execution cards instead of chat
-                messages.
+                Track Planner, Executor, Reviewer, and Compliance Report
+                stages as structured execution cards instead of chat messages.
               </p>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-3 lg:min-w-[520px]">
               {[
-                ["Completed", `${completedStages}/5`, BadgeCheck],
+                ["Completed", `${completedStages}/4`, BadgeCheck],
                 ["Live progress", `${livePulse}%`, Sparkles],
                 ["Elapsed", "5.1s", Clock3]
               ].map(([label, value, Icon]) => (
@@ -108,7 +107,7 @@ export function WorkflowDashboardPage() {
                   ["GSTIN", "Detected"],
                   ["Notice", "DRC-01"],
                   ["Risk", "Medium"],
-                  ["Revision", "Available"]
+                  ["Revision", "Optional"]
                 ].map(([label, value]) => (
                   <div
                     key={label}

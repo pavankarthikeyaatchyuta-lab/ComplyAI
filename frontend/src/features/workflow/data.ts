@@ -38,18 +38,6 @@ export const workflowStages: WorkflowStage[] = [
     progress: 100
   },
   {
-    id: "revision",
-    title: "Revision",
-    description: "Allows one controlled correction before the final report.",
-    status: "completed",
-    executionTime: "0.0s",
-    provider: "Workflow Policy",
-    outputSummary:
-      "No revision required; reviewer approval moves the workflow directly to the final report.",
-    issues: [],
-    progress: 100
-  },
-  {
     id: "report",
     title: "Compliance Report",
     description: "Packages verified artifacts into the final action report.",
