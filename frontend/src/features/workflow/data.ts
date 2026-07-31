@@ -29,13 +29,13 @@ export const workflowStages: WorkflowStage[] = [
     id: "reviewer",
     title: "Reviewer",
     description: "Verifies consistency, completeness, and report readiness.",
-    status: "running",
+    status: "completed",
     executionTime: "0.9s",
     provider: "Gemini 1.5 Pro",
     outputSummary:
       "Cross-checking extracted dates, GSTIN, notice category, and response checklist against generated output.",
     issues: ["One missing annexure reference requires user confirmation."],
-    progress: 72
+    progress: 100
   },
   {
     id: "revision",
