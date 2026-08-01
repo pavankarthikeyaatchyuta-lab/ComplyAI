@@ -17,6 +17,7 @@ import { UploadPreviewPanel } from "../features/upload/components/UploadPreviewP
 import type { FileValidation, RecentUpload, UploadStatus } from "../features/upload/types";
 import { validateUploadFile } from "../features/upload/validation";
 import { RippleButton } from "../components/motion/RippleButton";
+import { createWorkflow, runWorkflow, uploadDocument } from "../services";
 
 const initialRecentUploads: RecentUpload[] = [
   {
@@ -58,6 +59,8 @@ export function UploadPage() {
   const [progress, setProgress] = useState(0);
   const [recentUploads, setRecentUploads] =
     useState<RecentUpload[]>(initialRecentUploads);
+  const [workflowId, setWorkflowId] = useState<string | null>(null);
+  const [apiError, setApiError] = useState<string | null>(null);
 
   const canUpload = Boolean(selectedFile && validation?.valid);
 
@@ -70,6 +73,7 @@ export function UploadPage() {
 
   const handleFileSelected = (file: File) => {
     setSelectedFile(file);
+    setApiError(null);
     setStatus("validating");
     setProgress(0);
 
@@ -85,6 +89,21 @@ export function UploadPage() {
 
     setStatus("uploading");
     setProgress(8);
+
+    window.setTimeout(async () => {
+      try {
+        const documentType = validation.documentType ?? "GST Document";
+        const document = await uploadDocument(selectedFile, mapDocumentType(documentType));
+        const workflow = await createWorkflow(document.document_id);
+        await runWorkflow(workflow.workflow_id);
+        setWorkflowId(workflow.workflow_id);
+        window.sessionStorage.setItem("complyai_workflow_id", workflow.workflow_id);
+        window.sessionStorage.setItem("complyai_document_id", document.document_id);
+        window.sessionStorage.setItem("complyai_report_workflow_id", workflow.workflow_id);
+      } catch (error) {
+        setApiError(error instanceof Error ? error.message : "Upload failed.");
+      }
+    }, 50);
   };
 
   useEffect(() => {
@@ -184,6 +203,18 @@ export function UploadPage() {
               <FileDropzone onFileSelected={handleFileSelected} />
 
               <AnimatePresence mode="wait">
+                {apiError && (
+                  <motion.div
+                    key="api-error"
+                    className="mt-5 rounded-3xl border border-red-300/25 bg-red-500/10 p-5 text-sm text-red-100"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                  >
+                    <p className="font-bold">Backend unavailable</p>
+                    <p className="mt-1">{apiError}</p>
+                  </motion.div>
+                )}
                 {validation?.valid === false && validation.reason && (
                   <motion.div
                     key="unsupported"
@@ -287,8 +318,8 @@ export function UploadPage() {
               </div>
             </div>
 
-            <RecentUploads uploads={recentUploads} />
-          </div>
+              <RecentUploads uploads={recentUploads} />
+            </div>
 
           <UploadPreviewPanel
             file={selectedFile}
@@ -300,4 +331,21 @@ export function UploadPage() {
       </div>
     </main>
   );
+}
+
+function mapDocumentType(documentType: string) {
+  switch (documentType) {
+    case "GST Notice DRC-01":
+      return "DRC_01";
+    case "GST Notice GSTR-3A":
+      return "GSTR_3A";
+    case "GST Notice ASMT-10":
+      return "ASMT_10";
+    case "GST Invoice":
+      return "GST_INVOICE";
+    case "Tax Reminder":
+      return "TAX_REMINDER";
+    default:
+      return "GST_INVOICE";
+  }
 }

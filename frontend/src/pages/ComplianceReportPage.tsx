@@ -18,6 +18,8 @@ import { ReportActionBar } from "../features/report/components/ReportActionBar";
 import { ReportMetricCard } from "../features/report/components/ReportMetricCard";
 import { ReportSectionCard } from "../features/report/components/ReportSectionCard";
 import { complianceReport } from "../features/report/data";
+import { getWorkflowReport } from "../services";
+import { useEffect, useState } from "react";
 
 const priorityTone = {
   low: "border-emerald/30 bg-emerald/10 text-emerald",
@@ -26,6 +28,18 @@ const priorityTone = {
 };
 
 export function ComplianceReportPage() {
+  const [backendWorkflowId, setBackendWorkflowId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const workflowId = window.sessionStorage.getItem("complyai_report_workflow_id");
+    if (!workflowId) return;
+
+    setBackendWorkflowId(workflowId);
+    getWorkflowReport(workflowId).catch(() => {
+      // Keep the static report visible if the backend is unavailable.
+    });
+  }, []);
+
   return (
     <main className="min-h-screen overflow-hidden bg-navy text-white">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(46,144,250,0.26),transparent_30rem),radial-gradient(circle_at_82%_16%,rgba(16,185,129,0.16),transparent_28rem)]" />
@@ -48,6 +62,12 @@ export function ComplianceReportPage() {
               <h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-tight text-white md:text-6xl">
                 Compliance Action Report
               </h1>
+              {backendWorkflowId && (
+                <p className="mt-3 text-sm text-slate-400">
+                  Synced from backend workflow{" "}
+                  <span className="font-semibold text-white">{backendWorkflowId}</span>
+                </p>
+              )}
               <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
                 A professional, export-ready report with immediate actions,
                 checklist, missing information, draft response, review status,

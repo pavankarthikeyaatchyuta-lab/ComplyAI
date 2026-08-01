@@ -11,18 +11,23 @@ import {
 } from "lucide-react";
 import { workflowStages } from "../features/workflow/data";
 import { WorkflowTimeline } from "../features/workflow/components/WorkflowTimeline";
+import { getWorkflow } from "../services";
 
 export function WorkflowDashboardPage() {
   const [livePulse, setLivePulse] = useState(100);
+  const [backendWorkflowId, setBackendWorkflowId] = useState<string | null>(null);
 
   useEffect(() => {
-    setLivePulse(100);
+    const workflowId = window.sessionStorage.getItem("complyai_workflow_id");
+    if (!workflowId) return;
+
+    setBackendWorkflowId(workflowId);
+    getWorkflow(workflowId).catch(() => {
+      // Keep the demo timeline visible if the backend is temporarily unavailable.
+    });
   }, []);
 
-  const completedStages = useMemo(
-    () => workflowStages.filter((stage) => stage.status === "completed").length,
-    []
-  );
+  const completedStages = useMemo(() => workflowStages.filter((stage) => stage.status === "completed").length, []);
 
   return (
     <main className="min-h-screen overflow-hidden bg-navy text-white">
@@ -49,6 +54,11 @@ export function WorkflowDashboardPage() {
                 Track Planner, Executor, Reviewer, and Compliance Report
                 stages as structured execution cards instead of chat messages.
               </p>
+              {backendWorkflowId && (
+                <p className="mt-3 text-sm text-slate-400">
+                  Synced to backend workflow <span className="font-semibold text-white">{backendWorkflowId}</span>
+                </p>
+              )}
             </div>
 
             <div className="grid gap-3 sm:grid-cols-3 lg:min-w-[520px]">

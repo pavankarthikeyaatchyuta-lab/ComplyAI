@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: complyai-backend
+    env: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:///./complyai.db
+      - key: UPLOAD_DIR
+        value: ./uploads
+      - key: REPORT_DIR
+        value: ./reports
+      - key: ALLOWED_ORIGINS
+        value: https://comply-ai-five.vercel.app
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+
