@@ -168,7 +168,7 @@ class LLMClientTest(unittest.TestCase):
 
         transport = CaptureTransport()
         transport._call_gemini(
-            model="gemini-2.5-flash",
+            model="gemini-3.5-flash",
             api_key="gemini-test-key",
             prompt="Return JSON",
             timeout_seconds=1.0,
@@ -176,7 +176,7 @@ class LLMClientTest(unittest.TestCase):
 
         self.assertEqual(
             transport.urls,
-            ["https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=gemini-test-key"],
+            ["https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=gemini-test-key"],
         )
 
 

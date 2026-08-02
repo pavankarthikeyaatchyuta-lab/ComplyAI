@@ -222,7 +222,7 @@ class LLMClient:
             ),
             LLMProviderConfig(
                 name="gemini",
-                model="gemini-2.5-flash",
+                model="gemini-3.5-flash",
                 api_key=self.settings.gemini_api_key,
             ),
         ]
