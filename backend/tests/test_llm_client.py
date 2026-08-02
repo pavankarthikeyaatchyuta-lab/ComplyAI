@@ -10,6 +10,7 @@ from pydantic import BaseModel
 from app.core.config import Settings
 from app.integrations.llm_client import (
     LLMClient,
+    HTTPProviderTransport,
     LLMProviderTimeout,
     LLMRateLimit,
     LLMServiceUnavailable,
@@ -131,6 +132,52 @@ class LLMClientTest(unittest.TestCase):
 
         self.assertIsNone(client.provider_used)
         self.assertEqual(transport.calls, ["groq", "gemini"])
+
+    def test_default_provider_models_are_current(self) -> None:
+        """The baked-in provider defaults should target the current model IDs."""
+        transport = FakeTransport(
+            {
+                "groq": {"status": "ok", "summary": "planned"},
+                "gemini": {"status": "ok", "summary": "fallback"},
+            }
+        )
+        client = LLMClient(settings=self.make_settings(), transport=transport)
+
+        client.complete_json(prompt="Return JSON", response_schema=SampleResponse)
+
+        self.assertEqual(transport.calls, ["groq"])
+        self.assertEqual(client.provider_used, "groq")
+
+    def test_gemini_url_includes_current_model_name(self) -> None:
+        """Gemini requests should be formed from the current model identifier."""
+
+        class CaptureTransport(HTTPProviderTransport):
+            def __init__(self) -> None:
+                self.urls: list[str] = []
+
+            def _post_json(
+                self,
+                *,
+                url: str,
+                api_key: str | None,
+                body: dict[str, Any],
+                timeout_seconds: float,
+            ) -> dict[str, Any]:
+                self.urls.append(url)
+                return {"candidates": [{"content": {"parts": [{"text": '{"status":"ok","summary":"fallback"}'}]}}]}
+
+        transport = CaptureTransport()
+        transport._call_gemini(
+            model="gemini-2.5-flash",
+            api_key="gemini-test-key",
+            prompt="Return JSON",
+            timeout_seconds=1.0,
+        )
+
+        self.assertEqual(
+            transport.urls,
+            ["https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=gemini-test-key"],
+        )
 
 
 if __name__ == "__main__":

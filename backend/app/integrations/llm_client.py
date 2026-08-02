@@ -217,12 +217,12 @@ class LLMClient:
         providers = [
             LLMProviderConfig(
                 name="groq",
-                model="llama-3.1-70b-versatile",
+                model="openai/gpt-oss-120b",
                 api_key=self.settings.groq_api_key,
             ),
             LLMProviderConfig(
                 name="gemini",
-                model="gemini-1.5-flash",
+                model="gemini-2.5-flash",
                 api_key=self.settings.gemini_api_key,
             ),
         ]
